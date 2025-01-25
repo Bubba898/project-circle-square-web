@@ -1,7 +1,8 @@
 export type ClientType = "web_client_ws" | "unity_client_ws"
 export type State = "not_connected" | "waiting_for_other" | "game_started"
-export type EventType = "GameStart"
+
 export type ItemType = "shield" | "bomb"
+export type EventType = "GameStart" | "PositionUpdate"
 
 export type Position = {
   x: number
@@ -19,6 +20,11 @@ export type SpawnItemPayload = {
 }
 
 export type MessagePayload = PositionUpdatePayload | SpawnItemPayload
+
+export type PositionMessage = {
+  event: "PositionUpdate"
+  payload: PositionUpdatePayload
+}
 
 export type Message = {
   event: EventType
