@@ -1,8 +1,7 @@
 <script lang="ts">
-  import type {ClientType, ItemType, Message, State, SpawnItemPayload, Position, PositionMessage} from "$lib/types/types";
+  import type {ItemType, State, SpawnItemPayload, Position, PositionMessage, SpawnItemMessage, Message} from "$lib/types/types";
   import Map from "$lib/components/Map.svelte";
   import CheckBoxes from "$lib/components/CheckBoxes.svelte";
-	import { json } from "@sveltejs/kit";
 
   let connection_state: State = "not_connected"
   let ws: WebSocket | undefined = undefined
@@ -14,12 +13,12 @@
   $: messages = [""]
 
   let player_1_position: Position = {
-x: 0.32,
-y: 0.4
+    x: 50,
+    y: 50
   }
 
-    let player_2_position: Position = {
-        x: 0.65,
+  let player_2_position: Position = {
+    x: 0.65,
     y: 0.5
   }
 
@@ -31,10 +30,14 @@ y: 0.4
       item_type: item_type
     }
 
-    console.log(JSON.stringify(payload))
+    let message: SpawnItemMessage = {
+      event: "ItemSpawn",
+      payload: {SpawnItemPayload: payload}
+    }
 
-    ws?.send(JSON.stringify(payload))
+    console.log(JSON.stringify(message))
 
+    ws?.send(JSON.stringify(message))
   }
 
 
@@ -43,8 +46,9 @@ y: 0.4
   }
 
   function on_position_update(message: PositionMessage) {
-    player_1_position = message.payload.player_1
-    player_2_position = message.payload.player_2
+    if(message.payload.PositionUpdatePayload?.player) {
+      player_1_position = message.payload.PositionUpdatePayload?.player
+    }
   }
 
   function on_message_json(message: Message) {
@@ -115,9 +119,6 @@ y: 0.4
   <hr/>
   <label>Message: <input type="text" bind:value={message_text}/></label>
   <button class="btn btn-primary" on:click|preventDefault={sendMessage}>Send</button>
-  {#each messages as message}
-    <li>{message}</li>
-  {/each}
 {/if}
 <ul id='messages'>
 </ul>

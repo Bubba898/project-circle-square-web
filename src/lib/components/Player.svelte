@@ -4,9 +4,13 @@
 
   export let pos: Position
   export let color: "red" | "blue" = "red"
+  export let x_size: number
+  export let y_size: number
+
+  console.log(x_size, y_size, pos)
 </script>
 
-<span class="dot" style="background-color: {color}; bottom: {pos.y*100}%; left: {pos.x*100}%"></span>
+<span class="dot" style="background-color: {color}; bottom: {(pos.y/y_size)*100}%; left: {(pos.x/x_size)*100}%"></span>
 
 <style>
   .dot {
