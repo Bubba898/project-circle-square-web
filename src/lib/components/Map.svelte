@@ -12,9 +12,11 @@
   }
 </script>
 
-<div class="flex" style="position: relative; width: fit-content">
-  <Player color="red" pos={player_1_position}/>
-  <Player color="blue" pos={player_2_position}/>
-  <img src="maps/map_1.png" alt="Map"/>
+<div class="max-w-md mx-auto p-6 bg-grey text-white rounded-lg shadow-lg border-2 border-black">
+  <div class="relative flex justify-center items-center">
+    <Player color="red" pos={player_1_position} />
+    <Player color="blue" pos={player_2_position} />
+    <img src="maps/map_1.png" alt="Map" class="rounded-lg" />
+  </div>
 </div>
-
+<br>

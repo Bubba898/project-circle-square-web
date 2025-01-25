@@ -34,6 +34,7 @@ y: 0.4
     console.log(JSON.stringify(payload))
 
     ws?.send(JSON.stringify(payload))
+
   }
 
 
@@ -88,16 +89,16 @@ y: 0.4
 </script>
 
 
-<h1>Game State: {connection_state} {simulate_unity}</h1>
-<hr/>
+
 {#if connection_state === 'not_connected'}
-<form>
+<form class="gap-5 flex flex-col max-w-md mx-auto p-6 bg-grey text-white rounded-lg shadow-lg border-2 border-black mt-16" >
   <p><label>Session ID: <input type="number" bind:value={session_id}/></label></p>
   <p><label>Server URL: <input type="text" bind:value={server_url}/></label></p>
-  <label>Simulate Unity Client: <input type="checkbox" bind:checked={simulate_unity}/></label>
+  <label>Simulate Unity Client: <input class="checkbox checkbox-success" type="checkbox" bind:checked={simulate_unity}/></label>
   <label>Use WSS: <input type="checkbox" bind:checked={use_wss}/></label>
   <button on:click|preventDefault={connect} class="btn btn-primary">Connect</button>
 </form>
+<br>
 {:else if connection_state === 'waiting_for_other'}
   <p>
     Waiting for unity client to connect...
@@ -123,3 +124,6 @@ y: 0.4
 <Map player_1_position={player_1_position} player_2_position={player_2_position}/>
 
 <CheckBoxes send_item_function={send_item}/>
+
+<h1>Game State: {connection_state} {simulate_unity}</h1>
+<hr/>

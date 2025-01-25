@@ -14,14 +14,47 @@
     }
 </script>
 
-
-x<input type="number" bind:value={x}/>
-y<input type="number" bind:value={y}/>
-<button class="btn" on:click={onClick}>Send</button>
-
-<label>
-	<input checked={selected==="shield"} on:change={onChange} type="radio" name="amount" value="shield" /> Shield
-</label>
-<label>
-	<input checked={selected==="bomb"} on:change={onChange} type="radio" name="amount" value="bomb" /> Bomb
-</label>
+<div class="max-w-md mx-auto p-6 bg-grey text-white rounded-lg shadow-lg border-2 border-black">
+    <h3 class="text-lg font-semibold mb-4">Enter Coordinates</h3>
+    <div class="mb-4">
+      <label class="block text-sm font-medium">X</label>
+      <input
+        type="number"
+        class="mt-1 w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
+    <div class="mb-4">
+      <label class="block text-sm font-medium">Y</label>
+      <input
+        type="number"
+        class="mt-1 w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
+    <button
+      class="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition"
+    >
+      Send
+    </button>
+    <div class="mt-6">
+      <h4 class="text-sm font-medium mb-2">Select an Option</h4>
+      <div class="flex items-center mb-2">
+        <input
+          type="radio"
+          name="amount"
+          value="shield"
+          class="mr-2"
+        />
+        <label class="text-sm">Shield</label>
+      </div>
+      <div class="flex items-center">
+        <input
+          type="radio"
+          name="amount"
+          value="bomb"
+          class="mr-2"
+        />
+        <label class="text-sm">Bomb</label>
+      </div>
+    </div>
+  </div>
+  
