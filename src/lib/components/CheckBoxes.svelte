@@ -14,7 +14,7 @@
     }
 </script>
 
-<div class="max-w-md mx-auto p-6 bg-grey text-white rounded-lg shadow-lg border-2 border-black">
+<div class="max-w-md mx-auto p-6 bg-grey text-white rounded-lg shadow-lg border-2 border-black">    
     <h3 class="text-lg font-semibold mb-4">Enter Coordinates</h3>
     <div class="mb-4">
       <label class="block text-sm font-medium">X</label>
@@ -54,47 +54,28 @@
           class="mr-2"
         />
         <label class="text-sm">Bomb</label>
-      </div>
 
-      <div class="mt-6">
-      <h4 class="text-sm font-medium mb-2">Select an Option</h4>
-      <div class="flex items-center mb-2">
-        <input
-          type="radio"
-          name="amount"
-          value="shield"
-          class="mr-2"
-        />
+        <div class="flex items-center">
+            <input
+              type="radio"
+              name="amount"
+              value="zombie"
+              class="mr-2"
+            />
+        <label class="text-sm">Zombie</label>
 
-        <div class="mt-6">
-            <h4 class="text-sm font-medium mb-2">Select an Option</h4>
-            <div class="flex items-center mb-2">
-              <input
-                type="radio"
-                name="amount"
-                value="zombie"
-                class="mr-2"
-        />
-
-        <div class="mt-6">
-            <h4 class="text-sm font-medium mb-2">Select an Option</h4>
-            <div class="flex items-center mb-2">
-              <input
-                type="radio"
-                name="amount"
-                value="zombie"
-                class="mr-2"
-        />
+        <div class="flex items-center">
+            <input
+              type="radio"
+              name="amount"
+              value="enemy"
+              class="mr-2"
+            />
+        <label class="text-sm">Enemy</label>
         
-        <div class="mt-6">
-            <h4 class="text-sm font-medium mb-2">Select an Option</h4>
-            <div class="flex items-center mb-2">
-              <input
-                type="radio"
-                name="amount"
-                value="enemy"
-                class="mr-2"
-        />
+    </div>
+    </div>
+    </div>
     </div>
   </div>
   
