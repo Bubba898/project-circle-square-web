@@ -1,7 +1,8 @@
 <script lang="ts">
-  import type {ClientType, Message, Position, PositionMessage, State} from "$lib/types/types";
+  import type {ClientType, ItemType, Message, State, SpawnItemPayload, Position, PositionMessage} from "$lib/types/types";
   import Map from "$lib/components/Map.svelte";
   import CheckBoxes from "$lib/components/CheckBoxes.svelte";
+	import { json } from "@sveltejs/kit";
 
   let connection_state: State = "not_connected"
   let ws: WebSocket | undefined = undefined
@@ -13,13 +14,26 @@
   $: messages = [""]
 
   let player_1_position: Position = {
-    x: 0.32,
-    y: 0.4
+x: 0.32,
+y: 0.4
   }
 
-  let player_2_position: Position = {
-    x: 0.65,
+    let player_2_position: Position = {
+        x: 0.65,
     y: 0.5
+  }
+
+  function send_item(x: number, y: number, item_type: ItemType){
+    let payload: SpawnItemPayload = {
+      position: {
+        x:x, y: y
+      },
+      item_type: item_type
+    }
+
+    console.log(JSON.stringify(payload))
+
+    ws?.send(JSON.stringify(payload))
   }
 
 
@@ -41,6 +55,7 @@
     }
     messages = messages
   }
+
 
   function on_message(message: string) {
     messages.push(message)
@@ -105,6 +120,6 @@
 {/if}
 <ul id='messages'>
 </ul>
-
 <Map player_1_position={player_1_position} player_2_position={player_2_position}/>
-<CheckBoxes/>
+
+<CheckBoxes send_item_function={send_item}/>
