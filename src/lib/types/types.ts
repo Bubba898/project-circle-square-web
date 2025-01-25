@@ -1,7 +1,7 @@
 export type ClientType = "web_client_ws" | "unity_client_ws"
 export type State = "not_connected" | "waiting_for_other" | "game_started"
 
-export type ItemType = "shield" | "bomb"
+export type ItemType = "shield" | "bomb" | "zombie" | "enemy" 
 export type EventType = "GameStart" | "PositionUpdate" | "ItemSpawn"
 
 export type Position = {

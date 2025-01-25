@@ -14,7 +14,7 @@
     }
 </script>
 
-<div class="max-w-md mx-auto p-6 bg-grey text-white rounded-lg shadow-lg border-2 border-black">
+<div class="max-w-md mx-auto p-6 bg-grey text-white rounded-lg shadow-lg border-2 border-black">    
     <h3 class="text-lg font-semibold mb-4">Enter Coordinates</h3>
     <div class="mb-4">
       <label class="block text-sm font-medium">X</label>
@@ -54,7 +54,28 @@
           class="mr-2"
         />
         <label class="text-sm">Bomb</label>
-      </div>
+
+        <div class="flex items-center">
+            <input
+              type="radio"
+              name="amount"
+              value="zombie"
+              class="mr-2"
+            />
+        <label class="text-sm">Zombie</label>
+
+        <div class="flex items-center">
+            <input
+              type="radio"
+              name="amount"
+              value="enemy"
+              class="mr-2"
+            />
+        <label class="text-sm">Enemy</label>
+        
+    </div>
+    </div>
+    </div>
     </div>
   </div>
   
