@@ -32,7 +32,7 @@ y: 0.4
 
     let message: SpawnItemMessage = {
       event: "ItemSpawn",
-      SpawnItemPayload: payload
+      payload: {SpawnItemPayload: payload}
     }
 
     console.log(JSON.stringify(message))
@@ -46,8 +46,7 @@ y: 0.4
   }
 
   function on_position_update(message: PositionMessage) {
-    player_1_position = message.PositionUpdatePayload.player_1
-    player_2_position = message.PositionUpdatePayload.player_2
+    player_1_position = message.payload.PositionUpdatePayload?.player
   }
 
   function on_message_json(message: Message) {
