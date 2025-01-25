@@ -46,7 +46,9 @@ y: 0.4
   }
 
   function on_position_update(message: PositionMessage) {
-    player_1_position = message.payload.PositionUpdatePayload?.player
+    if(message.payload.PositionUpdatePayload?.player) {
+      player_1_position = message.payload.PositionUpdatePayload?.player
+    }
   }
 
   function on_message_json(message: Message) {
