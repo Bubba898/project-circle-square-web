@@ -99,7 +99,7 @@
   <p><label>Session ID: <input type="number" bind:value={session_id}/></label></p>
   <p><label>Server URL: <input type="text" bind:value={server_url}/></label></p>
   <label>Simulate Unity Client: <input class="checkbox checkbox-success" type="checkbox" bind:checked={simulate_unity}/></label>
-  <label>Use WSS: <input type="checkbox" bind:checked={use_wss}/></label>
+  <label>Use WSS: <input class="checkbox checkbox-success"type="checkbox" bind:checked={use_wss}/></label>
   <button on:click|preventDefault={connect} class="btn btn-primary">Connect</button>
 </form>
 <br>

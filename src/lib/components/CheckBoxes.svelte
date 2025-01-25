@@ -55,6 +55,46 @@
         />
         <label class="text-sm">Bomb</label>
       </div>
+
+      <div class="mt-6">
+      <h4 class="text-sm font-medium mb-2">Select an Option</h4>
+      <div class="flex items-center mb-2">
+        <input
+          type="radio"
+          name="amount"
+          value="shield"
+          class="mr-2"
+        />
+
+        <div class="mt-6">
+            <h4 class="text-sm font-medium mb-2">Select an Option</h4>
+            <div class="flex items-center mb-2">
+              <input
+                type="radio"
+                name="amount"
+                value="zombie"
+                class="mr-2"
+        />
+
+        <div class="mt-6">
+            <h4 class="text-sm font-medium mb-2">Select an Option</h4>
+            <div class="flex items-center mb-2">
+              <input
+                type="radio"
+                name="amount"
+                value="zombie"
+                class="mr-2"
+        />
+        
+        <div class="mt-6">
+            <h4 class="text-sm font-medium mb-2">Select an Option</h4>
+            <div class="flex items-center mb-2">
+              <input
+                type="radio"
+                name="amount"
+                value="enemy"
+                class="mr-2"
+        />
     </div>
   </div>
   
