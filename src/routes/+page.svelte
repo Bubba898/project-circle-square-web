@@ -49,7 +49,7 @@
 {#if connection_state === 'not_connected'}
 <form on:submit|preventDefault={sendMessage}>
   <p><label>Session ID: <input type="number" bind:value={session_id}/></label></p>
-  <p><label>Server URL: <input type="number" bind:value={server_url}/></label></p>
+  <p><label>Server URL: <input type="text" bind:value={server_url}/></label></p>
   <label>Simulate Unity Client: <input type="checkbox" bind:checked={simulate_unity}/></label>
   <button on:click|preventDefault={connect} class="btn btn-primary">Connect</button>
 </form>
