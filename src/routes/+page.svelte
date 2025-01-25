@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type {ClientType, ItemType, Message, State, SpawnItemPayload, Position, PositionMessage} from "$lib/types/types";
+  import type {ClientType, ItemType, Message, State, SpawnItemPayload, Position, PositionMessage, SpawnItemMessage} from "$lib/types/types";
   import Map from "$lib/components/Map.svelte";
   import CheckBoxes from "$lib/components/CheckBoxes.svelte";
 	import { json } from "@sveltejs/kit";
@@ -31,9 +31,14 @@ y: 0.4
       item_type: item_type
     }
 
-    console.log(JSON.stringify(payload))
+    let message: SpawnItemMessage = {
+      event: "ItemSpawn",
+      payload: payload
+    }
 
-    ws?.send(JSON.stringify(payload))
+    console.log(JSON.stringify(message))
+
+    ws?.send(JSON.stringify(message))
   }
 
 
