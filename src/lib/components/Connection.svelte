@@ -1,19 +1,36 @@
 <script lang="ts">
-  import type {ClientType} from "$lib/types/types";
+  import type {ClientType, EventType, Message} from "$lib/types/types";
 
+  export let connection_state = "not_connected"
   let ws: WebSocket | undefined = undefined
   let session_id: number = 1
   let client_type: ClientType = "web_client_ws"
   let message: string = ""
 
+  function on_game_start(message: Message) {
+    alert("GameStarted")
+  }
+
+  function on_message(message: Message) {
+    if(message.event == "GameStarted") {
+      on_game_start(message)
+    }
+  }
+
   function connect(event: SubmitEvent) {
     ws = new WebSocket("ws://localhost:8000/" + client_type + "/" + session_id);
+    connection_state = "self_connected"
     ws.onmessage = function (event) {
+      // exisiting example code
       let messages = document.getElementById('messages')
-      let message = document.createElement('li')
+      let message2 = document.createElement('li')
       let content = document.createTextNode(event.data)
-      message.appendChild(content)
-      messages?.appendChild(message)
+      message2.appendChild(content)
+      messages?.appendChild(message2)
+
+      // real implementation
+      const message: Message = JSON.parse(event.data)
+      on_message(message)
     };
   }
 
