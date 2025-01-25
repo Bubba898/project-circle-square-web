@@ -1,11 +1,13 @@
 <script lang="ts">
   import type {ClientType, Message, State} from "$lib/types/types";
+  import Map from "$lib/components/Map.svelte";
 
   let connection_state: State = "not_connected"
   let ws: WebSocket | undefined = undefined
   let session_id: number = 1
-  let server_url: string = "project-circle-square-server.vercel.app"
+  let server_url: string = "project-circle-square-server.onrender.com"
   let simulate_unity: boolean = false
+  let use_wss: boolean = false
   let message: string = ""
 
   function on_game_start(message: Message) {
@@ -21,7 +23,8 @@
 
   function connect(event: MouseEvent): void {
     let client_type = simulate_unity ? "unity_ws" : "web_client_ws"
-    ws = new WebSocket("ws://" + server_url + "/" + client_type + "/" + session_id);
+    let protocol = use_wss ? "wss" : "ws"
+    ws = new WebSocket(protocol + "://" + server_url + "/" + client_type + "/" + session_id);
     connection_state = "waiting_for_other"
     ws.onmessage = function (event) {
       // exisiting example code
@@ -51,6 +54,7 @@
   <p><label>Session ID: <input type="number" bind:value={session_id}/></label></p>
   <p><label>Server URL: <input type="text" bind:value={server_url}/></label></p>
   <label>Simulate Unity Client: <input type="checkbox" bind:checked={simulate_unity}/></label>
+  <label>Use WSS: <input type="checkbox" bind:checked={use_wss}/></label>
   <button on:click|preventDefault={connect} class="btn btn-primary">Connect</button>
 </form>
 {:else if connection_state === 'waiting_for_other'}
@@ -72,3 +76,5 @@
 {/if}
 <ul id='messages'>
 </ul>
+
+<Map/>
