@@ -10,7 +10,7 @@
   console.log(x_size, y_size, pos)
 </script>
 
-<span class="dot" style="background-color: {color}; bottom: {(pos.y/y_size)*100}%; left: {(pos.x/x_size)*100}%"></span>
+<span class="dot" style="background-color: {color}; bottom: {(pos.y/y_size)*97}%; left: {(pos.x/x_size)*97}%"></span>
 
 <style>
   .dot {

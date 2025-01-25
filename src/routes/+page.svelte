@@ -13,13 +13,13 @@
   $: messages = [""]
 
   let player_1_position: Position = {
-    x: 50,
-    y: 50
+    x: 49,
+    y: 49
   }
 
   let player_2_position: Position = {
-    x: 0.65,
-    y: 0.5
+    x: 1.5,
+    y: 1.5
   }
 
   function send_item(x: number, y: number, item_type: ItemType){
