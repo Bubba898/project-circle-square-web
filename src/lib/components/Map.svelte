@@ -1,11 +1,31 @@
 <script lang="ts">
   import Player from "$lib/components/Player.svelte";
   import type {Position} from "$lib/types/types";
+  import ContextMenu from "$lib/components/ContextMenu.svelte";
 
   export let player_1_position: Position
   export let player_2_position: Position
   let x_size: number = 50
   let y_size: number = 50
+
+  function item_click(name: string, pos: Position) {
+    console.log(name, pos)
+  }
+
+  let menu_items = [
+        {
+            'name': 'Zombie',
+            'onClick': item_click,
+            'displayText': "Zombie",
+            'class': 'fa-solid fa-plus'
+        },
+        {
+            'name': 'Bomb',
+            'onClick': item_click,
+            'displayText': "Bomb",
+            'class': 'fa-solid fa-square'
+        },
+    ]
 </script>
 
 
@@ -19,3 +39,5 @@
   </div>
 </div>
 <br>
+
+<ContextMenu menuItems={menu_items}/>
