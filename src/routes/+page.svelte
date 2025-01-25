@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type {ClientType, Message, State} from "$lib/types/types";
+  import type {ClientType, Message, Position, PositionMessage, State} from "$lib/types/types";
   import Map from "$lib/components/Map.svelte";
   import CheckBoxes from "./CheckBoxes.svelte";
 
@@ -12,14 +12,32 @@
   let message_text: string = ""
   $: messages = [""]
 
+  let player_1_position: Position = {
+    x: 0.32,
+    y: 0.4
+  }
+
+  let player_2_position: Position = {
+    x: 0.65,
+    y: 0.5
+  }
+
+
   function on_game_start(message: Message) {
     connection_state = "game_started"
+  }
+
+  function on_position_update(message: PositionMessage) {
+    player_1_position = message.payload.player_1
+    player_2_position = message.payload.player_2
   }
 
   function on_message_json(message: Message) {
     messages.push(JSON.stringify(message))
     if(message.event == "GameStart") {
       on_game_start(message)
+    } else if(message.event =="PositionUpdate") {
+      on_position_update(message as PositionMessage)
     }
     messages = messages
   }
@@ -88,5 +106,5 @@
 <ul id='messages'>
 </ul>
 
-<Map/>
+<Map player_1_position={player_1_position} player_2_position={player_2_position}/>
 <CheckBoxes/>
