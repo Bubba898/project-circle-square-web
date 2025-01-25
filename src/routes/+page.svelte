@@ -1,6 +1,7 @@
 <script lang="ts">
   import type {ClientType, Message, State} from "$lib/types/types";
   import Map from "$lib/components/Map.svelte";
+  import CheckBoxes from "./CheckBoxes.svelte";
 
   let connection_state: State = "not_connected"
   let ws: WebSocket | undefined = undefined
@@ -88,3 +89,4 @@
 </ul>
 
 <Map/>
+<CheckBoxes/>
