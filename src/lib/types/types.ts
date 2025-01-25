@@ -18,6 +18,11 @@ export type SpawnItemPayload = {
   item_type: ItemType
 }
 
+export type Message = {
+  event: EventType
+  payload?: MessagePayload
+}
+
 export type MessagePayload = PositionUpdatePayload | SpawnItemPayload
 
 export type Payload = {

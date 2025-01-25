@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type {ItemType, Message, State, SpawnItemPayload, Position, PositionMessage, SpawnItemMessage} from "$lib/types/types";
+  import type {ItemType, State, SpawnItemPayload, Position, PositionMessage, SpawnItemMessage, Message} from "$lib/types/types";
   import Map from "$lib/components/Map.svelte";
   import CheckBoxes from "$lib/components/CheckBoxes.svelte";
 
@@ -13,12 +13,12 @@
   $: messages = [""]
 
   let player_1_position: Position = {
-x: 0.32,
-y: 0.4
+    x: 50,
+    y: 50
   }
 
-    let player_2_position: Position = {
-        x: 0.65,
+  let player_2_position: Position = {
+    x: 0.65,
     y: 0.5
   }
 
@@ -119,9 +119,6 @@ y: 0.4
   <hr/>
   <label>Message: <input type="text" bind:value={message_text}/></label>
   <button class="btn btn-primary" on:click|preventDefault={sendMessage}>Send</button>
-  {#each messages as message}
-    <li>{message}</li>
-  {/each}
 {/if}
 <ul id='messages'>
 </ul>
