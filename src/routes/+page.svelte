@@ -1,8 +1,7 @@
 <script lang="ts">
-  import type {ClientType, ItemType, Message, State, SpawnItemPayload, Position, PositionMessage, SpawnItemMessage} from "$lib/types/types";
+  import type {ItemType, Message, State, SpawnItemPayload, Position, PositionMessage, SpawnItemMessage} from "$lib/types/types";
   import Map from "$lib/components/Map.svelte";
   import CheckBoxes from "$lib/components/CheckBoxes.svelte";
-	import { json } from "@sveltejs/kit";
 
   let connection_state: State = "not_connected"
   let ws: WebSocket | undefined = undefined
@@ -33,7 +32,7 @@ y: 0.4
 
     let message: SpawnItemMessage = {
       event: "ItemSpawn",
-      payload: payload
+      SpawnItemPayload: payload
     }
 
     console.log(JSON.stringify(message))
@@ -47,8 +46,8 @@ y: 0.4
   }
 
   function on_position_update(message: PositionMessage) {
-    player_1_position = message.payload.player_1
-    player_2_position = message.payload.player_2
+    player_1_position = message.PositionUpdatePayload.player_1
+    player_2_position = message.PositionUpdatePayload.player_2
   }
 
   function on_message_json(message: Message) {

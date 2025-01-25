@@ -10,8 +10,7 @@ export type Position = {
 }
 
 export type PositionUpdatePayload = {
-  player_1 : Position
-  player_2: Position
+  player: Position
 }
 
 export type SpawnItemPayload = {
@@ -19,20 +18,19 @@ export type SpawnItemPayload = {
   item_type: ItemType
 }
 
-export type SpawnItemMessage = {
-  payload: SpawnItemPayload
-  event: "ItemSpawn"
-}
-
-
 export type MessagePayload = PositionUpdatePayload | SpawnItemPayload
 
 export type PositionMessage = {
   event: "PositionUpdate"
-  payload: PositionUpdatePayload
+  PositionUpdatePayload: PositionUpdatePayload
 }
 
 export type Message = {
   event: EventType
   payload?: MessagePayload
+}
+
+export type SpawnItemMessage = {
+  SpawnItemPayload: SpawnItemPayload
+  event: "ItemSpawn"
 }
