@@ -37,7 +37,7 @@
         {
           "item": "enemy",
           'text': "Enemy",
-          'icon': 'fa-solid fa-person',
+          'icon': 'fa-solid fa-skull',
           "amount": 1,
           "cooldown": 5,
           "time_to_next": 1,
@@ -47,17 +47,17 @@
 
   function count_down() {
     menu_items.forEach((item: ContextMenuItem) => {
-      item.time_to_next = item.time_to_next - 1
+      item.time_to_next = item.time_to_next - 0.01
       if(item.time_to_next <= 0) {
         item.amount = item.amount + 1
         item.time_to_next = item.cooldown
       }
     })
     menu_items = menu_items
-    setTimeout(count_down, 1000);
+    setTimeout(count_down, 10);
   }
 
-  setTimeout(count_down, 1000);
+  setTimeout(count_down, 10);
 
   let map_div: HTMLDivElement
 
@@ -105,16 +105,16 @@
   <div class="flex justify-center items-center" bind:this={map_div}>
     <div style="position:relative">
     <div class="max-w-full mx-auto p-2 bg-grey text-white rounded-lg shadow-lg border-2 border-black">
-    <Player color="blue" pos={player_1_position} {x_size} {y_size} />
+    <Player color="yellow" pos={player_1_position} {x_size} {y_size} radius={24} icon="fa-solid fa-person-rifle"/>
     <img src="maps/map_1.png" alt="Map" class="rounded-lg" on:click={onMapClick} bind:clientWidth={map_width} bind:clientHeight={map_height}/>
     {#each zombies_positions as zombie}
-      <Player color="green" pos={zombie} {x_size} {y_size} />
+      <Player color="accent" pos={zombie} {x_size} {y_size} radius={24} icon="fa-solid fa-biohazard"/>
     {/each}
-    {#each bombs_positions as zombie}
-      <Player color="pink" pos={zombie} {x_size} {y_size} />
+    {#each bombs_positions as bomb}
+      <Player color="secondary" pos={bomb} {x_size} {y_size} radius={24} icon="fa-solid fa-bomb"/>
     {/each}
-    {#each enemies_positions as zombie}
-      <Player color="darkblue" pos={zombie} {x_size} {y_size} />
+    {#each enemies_positions as enemy}
+      <Player color="primary" pos={enemy} {x_size} {y_size} radius={24} icon="fa-solid fa-skull"/>
     {/each}
   </div>
   </div>
