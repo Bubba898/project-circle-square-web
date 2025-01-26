@@ -101,9 +101,11 @@
 </script>
 
 
-
 {#if connection_state === 'not_connected'}
 <form class="gap-5 flex flex-col max-w-md mx-auto p-6 bg-grey text-white rounded-lg shadow-lg border-2 border-black mt-16" >
+  <div class="flex justify-center mb-1">
+    <img src="Logo.png" alt="Logo" class="max-sm object-contain" />
+  </div>
   <p><label>Session ID: <input type="number" bind:value={session_id}/></label></p>
   <p><label>Server URL: <input type="text" bind:value={server_url}/></label></p>
   <label>Simulate Unity Client: <input class="checkbox checkbox-success" type="checkbox" bind:checked={simulate_unity}/></label>
