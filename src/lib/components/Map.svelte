@@ -47,17 +47,17 @@
 
   function count_down() {
     menu_items.forEach((item: ContextMenuItem) => {
-      item.time_to_next = item.time_to_next - 1
+      item.time_to_next = item.time_to_next - 0.01
       if(item.time_to_next <= 0) {
         item.amount = item.amount + 1
         item.time_to_next = item.cooldown
       }
     })
     menu_items = menu_items
-    setTimeout(count_down, 1000);
+    setTimeout(count_down, 10);
   }
 
-  setTimeout(count_down, 1000);
+  setTimeout(count_down, 10);
 
   let map_div: HTMLDivElement
 

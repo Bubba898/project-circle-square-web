@@ -25,20 +25,17 @@
             {#each menuItems as item}
               <li>
                 <button class="btn btn-outline p-2 p-1" on:click={() => onClick(item)} disabled={item.amount <= 0}>
-                  <span class="flex p-2 flex-col place-content-center place-items-center">
+                  <div class="flex p-2 flex-col place-content-center place-items-center">
                     <i class="{item.icon} text-{item.color}"/>
-                    <span class="m-1 ">
-                      <div class="badge badge-{item.color} badge-outline p-2 mr-1 text-{item.color}">{item.amount}</div>
+                    <span class="m-1 flex flex-row">
+                      <div class="w-8 badge badge-{item.color} badge-outline p-2 mr-1 text-{item.color}">{item.amount}</div>
                       <span class="text-{item.color}">{item.text}</span>
-                      <div class="badge badge-ghost badge-outline p-2 mr-1">{item.time_to_next}s</div>
-                      <div
-                        class="radial-progress bg-primary text-primary-content border-primary border-4"
-                        style="--value:{(item.cooldown / item.time_to_next)*100};"
-                        role="progressbar">
-                        item.time_to_nexts
-                      </div>
                     </span>
-                  </span>
+                    <div class="flex flex-row">
+                      <span class="w-8 h-2 text-xs">{Math.round(item.time_to_next*10)/10}s</span>
+                      <progress class="progress w-20 h-4 progress-{item.color}" value={(item.cooldown - item.time_to_next) === 0 ? 0 : Math.abs((((item.time_to_next) / item.cooldown)*100) - 100)} max="100"></progress>
+                    </div>
+                  </div>
               </button>
               </li>
             {/each}
@@ -66,7 +63,7 @@
     ul li button{
         font-size: 1rem;
         width: 100%;
-        height: 65px;
+        height: 85px;
         text-align: left;
         background-color: #222;
         border: 0px;
