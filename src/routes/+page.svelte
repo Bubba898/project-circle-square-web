@@ -13,8 +13,8 @@
   $: messages = [""]
 
   let player_1_position: Position = {
-    x: 49,
-    y: 49
+    x: 1,
+    y: 1
   }
 
   let zombies_positions: Position[]
