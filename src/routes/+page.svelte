@@ -106,11 +106,27 @@
   <div class="flex justify-center mb-1">
     <img src="Logo.png" alt="Logo" class="max-sm object-contain" />
   </div>
-  <p><label>Session ID: <input type="number" bind:value={session_id}/></label></p>
-  <p><label>Server URL: <input type="text" bind:value={server_url}/></label></p>
-  <label>Simulate Unity Client: <input class="checkbox checkbox-success" type="checkbox" bind:checked={simulate_unity}/></label>
-  <label>Use WSS: <input class="checkbox checkbox-success"type="checkbox" bind:checked={use_wss}/></label>
-  <button on:click|preventDefault={connect} class="btn btn-primary">Connect</button>
+  <div>
+    <div class="label">
+        <span class="label-text">Session ID</span>
+      </div>
+    <input class="input w-full max-w-xs" type="number" bind:value={session_id}/>
+  </div>
+  <div>
+    <div class="label">
+      <span class="label-text">Server URL</span>
+    </div>
+    <input class = "input w-full max-w-xs" type="text" bind:value={server_url}/>
+  </div>
+    <div class="label">
+      <span class="label-text">Simulate Unity Client</span>
+    </div>
+  <input class="checkbox checkbox-accent" type="checkbox" bind:checked={simulate_unity}/>
+    <div class="label">
+      <span class="label-text">Use WSS</span>
+    </div>
+  <input class="checkbox checkbox-accent"type="checkbox" bind:checked={use_wss}/>
+  <button on:click|preventDefault={connect} class="btn btn-accent">Connect</button>
 </form>
 <br>
 {:else if connection_state === 'waiting_for_other'}
