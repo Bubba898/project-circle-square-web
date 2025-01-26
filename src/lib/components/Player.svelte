@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </svelte:head>
 
-<span class="dot text-yellow-500 text-{color}" style="{color}; bottom: {(pos.y/y_size)*97}%; left: {(pos.x/x_size)*97}%; width: {radius}px; height: {radius}px; position: absolute">
+<span class="dot text-{color}" style="{color}; bottom: {(pos.y/y_size)*97}%; left: {(pos.x/x_size)*97}%; width: {radius}px; height: {radius}px; position: absolute">
   <i class="{icon}" style="position:absolute; left:2px; top: 2px;"></i>
 </span>
 
