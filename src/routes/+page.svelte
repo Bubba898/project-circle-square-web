@@ -146,12 +146,16 @@
   <Map player_1_position={player_1_position} send_item_function={send_item} zombies_positions={zombies_positions} bombs_positions={bombs_positions} enemies_positions={enemies_positions}/>
 {/if}
 
-
-<div class="btm-nav">
+<div class="btm-nav" style="background-color: #0000">
+  <div/>
+  <div class="flex justify-center mb-1">
+    <img src="Logo.png" alt="Logo" class="max-sm object-contain w-32 m-4" />
+  </div>
   <div>
-<hr/>
-<h1>Game State: {connection_state} {simulate_unity}</h1>
-</div>
+    <div class="text-xs text-ghost absolute bottom-0 right-0 pb-2 pr-8">
+      <span class="right-0 align-text-bottom">Created by: Team Circle Square</span>
+  </div>
+    </div>
 </div>
 
 <div class="fullscreen-bg w-full">

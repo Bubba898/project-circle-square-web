@@ -102,24 +102,25 @@
 </script>
 
 
-  <div class="flex justify-center items-center" bind:this={map_div}>
-    <div style="position:relative">
-    <div class="max-w-full mx-auto p-2 bg-grey text-white rounded-lg shadow-lg border-2 border-black">
-    <Player color="yellow" pos={player_1_position} {x_size} {y_size} radius={24} icon="fa-solid fa-person-rifle"/>
-    <img src="maps/map_1.png" alt="Map" class="rounded-lg" on:click={onMapClick} bind:clientWidth={map_width} bind:clientHeight={map_height}/>
-    {#each zombies_positions as zombie}
-      <Player color="accent" pos={zombie} {x_size} {y_size} radius={24} icon="fa-solid fa-biohazard"/>
-    {/each}
-    {#each bombs_positions as bomb}
-      <Player color="secondary" pos={bomb} {x_size} {y_size} radius={24} icon="fa-solid fa-bomb"/>
-    {/each}
-    {#each enemies_positions as enemy}
-      <Player color="primary" pos={enemy} {x_size} {y_size} radius={24} icon="fa-solid fa-skull"/>
-    {/each}
-  </div>
+<div class="flex m-4 justify-center items-center" bind:this={map_div}>
+  <div style="position:relative">
+    <div class="max-w-full mx-auto text-white rounded-lg shadow-lg border-2 border-black" style="background-color: #0005">
+      <Player color="yellow" pos={player_1_position} {x_size} {y_size} radius={24} icon="fa-solid fa-person-rifle"/>
+      <img src="maps/map_1.png" alt="Map" class="rounded-lg" on:click={onMapClick} bind:clientWidth={map_width} bind:clientHeight={map_height}/>
+      {#each zombies_positions as zombie}
+        <Player color="accent" pos={zombie} {x_size} {y_size} radius={24} icon="fa-solid fa-biohazard"/>
+      {/each}
+      {#each bombs_positions as bomb}
+        <Player color="secondary" pos={bomb} {x_size} {y_size} radius={24} icon="fa-solid fa-bomb"/>
+      {/each}
+      {#each enemies_positions as enemy}
+        <Player color="primary" pos={enemy} {x_size} {y_size} radius={24} icon="fa-solid fa-skull"/>
+      {/each}
+    </div>
   </div>
 </div>
 <br>
+
 
 <ContextMenu
   menuItems={menu_items}
