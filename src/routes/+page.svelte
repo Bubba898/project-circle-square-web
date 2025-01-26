@@ -102,36 +102,37 @@
 
 
 {#if connection_state === 'not_connected'}
-<form class="gap-5 flex flex-col max-w-md mx-auto p-6 bg-grey text-white rounded-lg shadow-lg border-2 border-black mt-16" >
+<form class="gap-2 flex flex-col max-w-md mx-auto p-6 bg-grey text-white rounded-lg shadow-lg border-2 border-black mt-16" >
   <div class="flex justify-center mb-1">
     <img src="Logo.png" alt="Logo" class="max-sm object-contain" />
   </div>
-  <div>
-    <div class="label">
-        <span class="label-text">Session ID</span>
-      </div>
-    <input class="input w-full max-w-xs" type="number" bind:value={session_id}/>
-  </div>
-  <div>
-    <div class="label">
-      <span class="label-text">Server URL</span>
+  <div class="label">
+      <span class="label-text">Session ID</span>
     </div>
-    <input class = "input w-full max-w-xs" type="text" bind:value={server_url}/>
+  <input class="input input-secondary w-full" type="number" bind:value={session_id}/>
+  <div class="label">
+    <span class="label-text">Server URL</span>
   </div>
+  <input class = "input input-secondary w-full" type="text" bind:value={server_url}/>
+  <div class="flex">
+    <input class="checkbox checkbox-secondary" type="checkbox" bind:checked={simulate_unity}/>
     <div class="label">
       <span class="label-text">Simulate Unity Client</span>
     </div>
-  <input class="checkbox checkbox-accent" type="checkbox" bind:checked={simulate_unity}/>
+  </div>
+
+  <div class="flex">
+    <input class="checkbox checkbox-secondary"type="checkbox" bind:checked={use_wss}/>
     <div class="label">
       <span class="label-text">Use WSS</span>
     </div>
-  <input class="checkbox checkbox-accent"type="checkbox" bind:checked={use_wss}/>
-  <button on:click|preventDefault={connect} class="btn btn-accent">Connect</button>
+  </div>
+  <button on:click|preventDefault={connect} class="btn btn-secondary">Connect</button>
 </form>
 <br>
 {:else if connection_state === 'waiting_for_other'}
   <div class="gap-5 flex flex-col max-w-md mx-auto p-6 bg-grey text-white rounded-lg shadow-lg border-2 border-black mt-16">
-  <p>
+  <p class="h1">
     Waiting for unity client to connect...
   </p>
   <hr/>
