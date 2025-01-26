@@ -39,3 +39,12 @@ export type SpawnItemMessage = {
   payload: Payload
   event: "ItemSpawn"
 }
+
+export type ContextMenuItem = {
+  item: ItemType,
+  text: string,
+  icon: string,
+  amount: number,
+  cooldown: number,
+  time_to_next: number
+}

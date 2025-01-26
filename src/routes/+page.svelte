@@ -122,9 +122,7 @@
 {/if}
 <ul id='messages'>
 </ul>
-<Map player_1_position={player_1_position} player_2_position={player_2_position}/>
-
-<CheckBoxes send_item_function={send_item}/>
+<Map player_1_position={player_1_position} player_2_position={player_2_position} send_item_function={send_item}/>
 
 <h1>Game State: {connection_state} {simulate_unity}</h1>
 <hr/>
