@@ -101,6 +101,8 @@
 </script>
 
 
+
+
 {#if connection_state === 'not_connected'}
 <form class="gap-2 flex flex-col max-w-md mx-auto p-6 bg-grey text-white rounded-lg shadow-lg border-2 border-black mt-16" >
   <div class="flex justify-center mb-1">
@@ -151,3 +153,31 @@
 <h1>Game State: {connection_state} {simulate_unity}</h1>
 </div>
 </div>
+
+<div class="fullscreen-bg w-full">
+     <video loop muted autoplay class="fullscreen-bg_video">
+          <source src="background.mp4" type="video/mp4">
+     </video>
+</div>
+
+<style>
+.fullscreen-bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -100;
+    object-fit: fill;
+}
+
+.fullscreen-bg_video {
+    object-fit: fill;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+</style>
