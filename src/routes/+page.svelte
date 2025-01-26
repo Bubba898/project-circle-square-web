@@ -8,7 +8,7 @@
   let session_id: number = 1
   let server_url: string = "project-circle-square-server.onrender.com"
   let simulate_unity: boolean = false
-  let use_wss: boolean = false
+  let use_wss: boolean = true
   let message_text: string = ""
   $: messages = [""]
 
@@ -16,6 +16,11 @@
     x: 49,
     y: 49
   }
+
+  let zombies_positions: Position[]
+  let bombs_positions: Position[]
+  let enemies_positions: Position[]
+
 
   let player_2_position: Position = {
     x: 1.5,
@@ -48,6 +53,9 @@
   function on_position_update(message: PositionMessage) {
     if(message.payload.PositionUpdatePayload?.player) {
       player_1_position = message.payload.PositionUpdatePayload?.player
+      zombies_positions = message.payload.PositionUpdatePayload?.zombies
+      bombs_positions = message.payload.PositionUpdatePayload?.bombs
+      enemies_positions = message.payload.PositionUpdatePayload?.enemies
     }
   }
 
@@ -104,6 +112,7 @@
 </form>
 <br>
 {:else if connection_state === 'waiting_for_other'}
+  <div class="gap-5 flex flex-col max-w-md mx-auto p-6 bg-grey text-white rounded-lg shadow-lg border-2 border-black mt-16">
   <p>
     Waiting for unity client to connect...
   </p>
@@ -111,18 +120,15 @@
   <p>
     Your Session ID: {session_id}
   </p>
+  </div>
 {:else if connection_state === 'game_started'}
-  <p>
-    Game is Started :)
-    Your Session ID: {session_id}
-  </p>
-  <hr/>
-  <label>Message: <input type="text" bind:value={message_text}/></label>
-  <button class="btn btn-primary" on:click|preventDefault={sendMessage}>Send</button>
+  <Map player_1_position={player_1_position} send_item_function={send_item} zombies_positions={zombies_positions} bombs_positions={bombs_positions} enemies_positions={enemies_positions}/>
 {/if}
-<ul id='messages'>
-</ul>
-<Map player_1_position={player_1_position} player_2_position={player_2_position} send_item_function={send_item}/>
 
-<h1>Game State: {connection_state} {simulate_unity}</h1>
+
+<div class="btm-nav">
+  <div>
 <hr/>
+<h1>Game State: {connection_state} {simulate_unity}</h1>
+</div>
+</div>

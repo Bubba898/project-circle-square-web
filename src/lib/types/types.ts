@@ -11,6 +11,9 @@ export type Position = {
 
 export type PositionUpdatePayload = {
   player: Position
+  zombies: Position[]
+  bombs: Position[]
+  enemies: Position[]
 }
 
 export type SpawnItemPayload = {
@@ -46,5 +49,6 @@ export type ContextMenuItem = {
   icon: string,
   amount: number,
   cooldown: number,
-  time_to_next: number
+  time_to_next: number,
+  color: string
 }

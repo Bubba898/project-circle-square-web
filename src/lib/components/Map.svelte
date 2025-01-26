@@ -4,11 +4,14 @@
   import ContextMenu from "$lib/components/ContextMenu.svelte";
 
   export let player_1_position: Position
-  export let player_2_position: Position
   let x_size: number = 50
   let y_size: number = 50
   let map_width: number = 0
   let map_height: number = 0
+
+  export let zombies_positions: Position[]
+  export let bombs_positions: Position[]
+  export let enemies_positions: Position[]
 
   export let send_item_function: (x: number, y: number, selected: ItemType) => void
 
@@ -20,22 +23,25 @@
           "amount": 1,
           "cooldown": 1,
           "time_to_next": 1,
+          "color": "accent"
       },
       {
           "item": "bomb",
           'text': "Bomb",
           'icon': 'fa-solid fa-bomb',
           "amount": 1,
-          "cooldown": 1,
+          "cooldown": 10,
           "time_to_next": 1,
+          "color": "secondary"
       },
         {
           "item": "enemy",
           'text': "Enemy",
           'icon': 'fa-solid fa-person',
           "amount": 1,
-          "cooldown": 1,
+          "cooldown": 5,
           "time_to_next": 1,
+          "color": "primary"
       },
     ]
 
@@ -99,8 +105,17 @@
   <div class="flex justify-center items-center" bind:this={map_div}>
     <div style="position:relative">
     <div class="max-w-full mx-auto p-2 bg-grey text-white rounded-lg shadow-lg border-2 border-black">
-    <Player color="blue" pos={player_2_position} {x_size} {y_size} />
+    <Player color="blue" pos={player_1_position} {x_size} {y_size} />
     <img src="maps/map_1.png" alt="Map" class="rounded-lg" on:click={onMapClick} bind:clientWidth={map_width} bind:clientHeight={map_height}/>
+    {#each zombies_positions as zombie}
+      <Player color="green" pos={zombie} {x_size} {y_size} />
+    {/each}
+    {#each bombs_positions as zombie}
+      <Player color="pink" pos={zombie} {x_size} {y_size} />
+    {/each}
+    {#each enemies_positions as zombie}
+      <Player color="darkblue" pos={zombie} {x_size} {y_size} />
+    {/each}
   </div>
   </div>
 </div>
@@ -113,8 +128,6 @@
   showMenu={context_menu_open}
   on_item_click={on_item_click}
 />
-
-<div class="dot" style="background-color: {'green'}; position: absolute; top: {menu_y}px; left: {menu_x}px"></div>
 
 <style>
   .dot {

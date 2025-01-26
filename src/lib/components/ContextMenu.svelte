@@ -19,11 +19,28 @@
 </svelte:head>
 
 {#if showMenu}
-<nav style="position: absolute; top:{y}px; left:{x}px">
+<nav style="position: absolute; top:{y}px; left:{x-170}px">
     <div class="navbar" id="navbar">
-        <ul>
+        <ul class="flex gap-2">
             {#each menuItems as item}
-                <li><button class="btn" on:click={() => onClick(item)}><i class={item.icon}></i>{item.text}: {item.amount}</button></li>
+              <li>
+                <button class="btn btn-outline p-2 p-1" on:click={() => onClick(item)} disabled={item.amount <= 0}>
+                  <span class="flex p-2 flex-col place-content-center place-items-center">
+                    <i class="{item.icon} text-{item.color}"/>
+                    <span class="m-1 ">
+                      <div class="badge badge-{item.color} badge-outline p-2 mr-1 text-{item.color}">{item.amount}</div>
+                      <span class="text-{item.color}">{item.text}</span>
+                      <div class="badge badge-ghost badge-outline p-2 mr-1">{item.time_to_next}s</div>
+                      <div
+                        class="radial-progress bg-primary text-primary-content border-primary border-4"
+                        style="--value:{(item.cooldown / item.time_to_next)*100};"
+                        role="progressbar">
+                        item.time_to_nexts
+                      </div>
+                    </span>
+                  </span>
+              </button>
+              </li>
             {/each}
         </ul>
     </div>
@@ -31,21 +48,15 @@
 {/if}
 
 <style>
-    * {
-        padding: 0;
-        margin: 0;
-    }
     .navbar{
         display: inline-flex;
-        border: 1px #999 solid;
-        width: 340px;
-        background-color: #fff;
+        background-color: #fff0;
         border-radius: 10px;
         overflow: hidden;
         flex-direction: column;
     }
     .navbar ul{
-        margin: 6px;
+        margin: 1px;
     }
     ul li{
         display: block;
@@ -54,12 +65,11 @@
     }
     ul li button{
         font-size: 1rem;
-        color: #222;
         width: 100%;
-        height: 30px;
+        height: 65px;
         text-align: left;
+        background-color: #222;
         border: 0px;
-        background-color: #fff;
     }
     ul li button:hover{
         color: #000;
