@@ -19,6 +19,12 @@
   <i class="{icon}" style="position:absolute; left:2px; top: 2px;"></i>
 </span>
 
+
+<!---
+Hacky span to have these classes in the build
+-->
+<span class="text-accent bg-accent text-secondary bg-secondary text-primary bg-primary progress-primary progress-secondary progress-accent" style="display:none"></span>
+
 <style>
   .dot {
     border-radius: 50%;
